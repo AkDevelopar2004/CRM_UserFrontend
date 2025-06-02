@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
+import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/common/constant/app_images.dart';
-import 'package:user_side_team_frontend/models/auth/view/login_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) =>  const LoginScreen()),
-      );
-    });
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      context.go('/login-screen');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImages.splashIcon), 
+            image: AssetImage(AppImages.splashIcon),
             fit: BoxFit.cover,
           ),
         ),

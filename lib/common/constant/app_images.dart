@@ -5,6 +5,7 @@ class AppImages {
     static const String profileImage = "assets/images/profile_image.png";
     static const String caseStudyImg = "assets/images/case_study_img.png";
     static const String projectImg = "assets/images/project_img.png";
+    static const String loginImg = "assets/images/login_img.png";
 }
 
 // here add svg icons
