@@ -4,6 +4,7 @@ import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/widgets/button_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/custom_dropdown_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
+import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 import '../../../common/constant/app_images.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -48,13 +49,18 @@ class LoginScreen extends StatelessWidget {
                   isPassword: true,
                 ),
                 const SizedBox(height: 10),
-                const Align(
+                Align(
                   alignment: Alignment.centerRight,
-                  child: TextWidget(
-                    text: 'Forgot Password?',
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.blue,
+                  child: InkWell(
+                    onTap: () {
+                      context.push(AppRoutes.forgotPassword);
+                    },
+                    child: TextWidget(
+                      text: 'Forgot Password?',
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.blue,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -62,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                   borderRadius: 20,
                   backgroundColor: AppColors.blueColor,
                   onClick: () {
-                    // TODO: Add login logic here
+                    context.go('/home-screen');
                   },
                   text: 'Login',
                   textColor: Colors.white,
