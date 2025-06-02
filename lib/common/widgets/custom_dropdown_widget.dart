@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
-  const TextFormFieldWidget(
-      {super.key,
-      this.validator,
-      this.backgroundColor,
-      this.suffixIcon,
-      this.prefixIcon,
-      this.controller,
-      this.hintText,
-      this.fontSize,
-      this.fontWeight,
-      this.hintTextColor,
-      this.rounded,
-      this.enabled,
-      this.prefixText,
-      this.height,
-      this.width,
-      this.contentPadding});
+  const TextFormFieldWidget({
+    super.key,
+    this.validator,
+    this.backgroundColor,
+    this.controller,
+    this.hintText,
+    this.fontSize,
+    this.fontWeight,
+    this.hintTextColor,
+    this.rounded,
+    this.enabled,
+    this.prefixText,
+    this.height,
+    this.width,
+    this.contentPadding,
+    this.prefixIcon,
+    this.isPassword = false,
+  });
 
   final String? Function(String?)? validator;
   final Color? backgroundColor;
-  final Widget? suffixIcon;
-  final Widget? prefixIcon;
   final TextEditingController? controller;
   final String? hintText;
   final double? fontSize;
@@ -35,43 +33,71 @@ class TextFormFieldWidget extends StatefulWidget {
   final double? height;
   final double? width;
   final double? contentPadding;
+  final Widget? prefixIcon;
+  final bool isPassword;
+
   @override
   State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
 }
 
 class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
+  bool _obscureText = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _obscureText = widget.isPassword;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(widget.rounded ?? 0),
-      ),
       height: widget.height,
       width: widget.width,
       child: TextFormField(
         validator: widget.validator,
         controller: widget.controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,
+        enabled: widget.enabled ?? true,
+        obscureText: widget.isPassword ? _obscureText : false,
+        style: TextStyle(
+          fontSize: widget.fontSize ?? 16,
+          fontWeight: widget.fontWeight,
+          fontFamily: 'Poppins',
+        ),
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.rounded ?? 0),
-          ),
-          fillColor: widget.backgroundColor,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-          suffixIcon: widget.suffixIcon,
-          prefixIcon: widget.prefixIcon,
-          prefixText: widget.prefixText,
-          hintText: widget.hintText,
-          enabled: widget.enabled ?? true,
+          isDense: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+          hintText: widget.hintText ?? "",
           hintStyle: TextStyle(
-            fontSize: widget.fontSize ?? 18,
+            fontSize: widget.fontSize ?? 16,
             fontWeight: widget.fontWeight,
-            color: widget.hintTextColor,
+            color: widget.hintTextColor ?? Colors.grey,
             fontFamily: 'Poppins',
           ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          fillColor: widget.backgroundColor,
+          prefixIcon: widget.prefixIcon,
+          prefixText: widget.prefixText,
+          suffixIcon: widget.isPassword
+              ? IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                )
+              : null,
         ),
-     ),
-);
-}
+      ),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/models/auth/view/login_screen.dart';
+import 'package:user_side_team_frontend/models/auth/view/singup_screen.dart';
 import 'package:user_side_team_frontend/models/auth/view/splash_screen.dart';
 import 'package:user_side_team_frontend/models/bottom_navigation/bottom_navigation_bar.dart';
 import 'package:user_side_team_frontend/models/case_study/view/detail_case_study_view.dart';
@@ -20,6 +21,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.loginScreen,
         builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.signupScreen,
+        builder: (context, state) => const SingupScreen(),
       ),
       GoRoute(
         path: AppRoutes.notification,
