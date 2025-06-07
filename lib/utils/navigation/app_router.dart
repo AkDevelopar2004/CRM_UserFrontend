@@ -13,6 +13,8 @@ import 'package:user_side_team_frontend/models/project/view/project_readymade_vi
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
+import '../../models/auth/view/change_password_screen.dart';
+
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: '/',
@@ -34,6 +36,9 @@ class AppRouter {
       ),
       GoRoute(path:  AppRoutes.verifyOtp,
         builder: (context, state) => const VerifyOtpScreen(),
+      ),
+      GoRoute(path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
       GoRoute(
         path: AppRoutes.homeScreen,
