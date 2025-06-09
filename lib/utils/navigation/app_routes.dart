@@ -15,4 +15,6 @@ class AppRoutes {
    static const String readymadeProject= "/readymade-project";
    static const String sendReferenceView = "/send-reference-view";
    static const String profileView="/profile-view";
+   static const String aboutCourse="/about-course";
+
 }
