@@ -94,7 +94,7 @@ class AppRouter {
       ),
        GoRoute(
         path: AppRoutes.editProfileScreen,
-        builder: (context, state) => const InvoicesScreen(),
+        builder: (context, state) => const EditProfileScreen(),
       ),
 
     ],

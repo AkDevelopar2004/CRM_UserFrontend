@@ -28,7 +28,8 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView> {
     const HomeScreen(),
     const CaseStudyView(),
     // Text("case study", style: optionStyle),
-    const Text('Profile', style: optionStyle),
+    // const Text('Profile', style: optionStyle),
+    
     const ProfileScreen(),
   ];
 
