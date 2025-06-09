@@ -17,6 +17,8 @@ import 'package:user_side_team_frontend/models/project/view/send_reference_view.
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../models/auth/view/change_password_screen.dart';
+import '../../models/profile/view/invoice_view.dart';
+import '../../models/profile/view/servicesTaken_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -82,10 +84,19 @@ class AppRouter {
         path: AppRoutes.aboutCourse,
         builder: (context, state) => const AboutCourse(),
       ),
+      GoRoute(
+        path: AppRoutes.servicestakenview,
+        builder: (context, state) => const ServicesTakenScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.Invoicesview,
+        builder: (context, state) => const InvoicesScreen(),
+      ),
        GoRoute(
         path: AppRoutes.editProfileScreen,
-        builder: (context, state) => EditProfileScreen(),
+        builder: (context, state) => const InvoicesScreen(),
       ),
+
     ],
   );
 }

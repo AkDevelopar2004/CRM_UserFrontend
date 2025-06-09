@@ -16,6 +16,9 @@ class AppRoutes {
    static const String sendReferenceView = "/send-reference-view";
    static const String profileView="/profile-view";
    static const String aboutCourse="/about-course";
+   static const String servicestakenview="/services-view";
+   static const String Invoicesview="/invoices-view";
+
 
    static const String editProfileScreen='/edit-profile';
 }

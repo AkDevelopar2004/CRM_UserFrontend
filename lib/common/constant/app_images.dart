@@ -12,6 +12,9 @@ class AppImages {
   static const String playstoreImg = "assets/images/playstore.png";
   static const String ecommerssImg = "assets/images/e-commerce.png";
   static const String travelImg = "assets/images/travel.png";
+  static const String webImg = "assets/images/Web.png";
+  static const String pdfImg = "assets/images/pdf 1.png";
+
 }
 
 // here add svg icons
