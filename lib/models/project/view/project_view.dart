@@ -104,11 +104,11 @@ class ProjectView extends StatelessWidget {
                   ),
                   Expanded(
                       child: GestureDetector(
-                        onTap: (){
-                          context.push(AppRoutes.sendReferenceView);
-                        },
-                        child: Container(
-                                            decoration: BoxDecoration(
+                    onTap: () {
+                      context.push(AppRoutes.sendReferenceView);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
                         color: AppColors.whiteColor,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
@@ -116,14 +116,15 @@ class ProjectView extends StatelessWidget {
                             color: Colors.grey
                                 .withOpacity(0.1), // Shadow color with opacity
                             spreadRadius: 2, // Spread of the shadow
-                            blurRadius: 5, // Blur radius for softening the shadow
-                            offset: const Offset(
-                                0, 3), // Horizontal and vertical shadow position
+                            blurRadius:
+                                5, // Blur radius for softening the shadow
+                            offset: const Offset(0,
+                                3), // Horizontal and vertical shadow position
                           ),
                         ],
-                                            ),
-                                            height: 57,
-                                            child: Column(
+                      ),
+                      height: 57,
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -138,9 +139,9 @@ class ProjectView extends StatelessWidget {
                             color: AppColors.semiDarkColor,
                           )
                         ],
-                                            ),
-                                          ),
-                      ))
+                      ),
+                    ),
+                  ))
                 ],
               ),
             ),

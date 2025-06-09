@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -17,25 +18,7 @@ class ProfileScreen extends StatelessWidget {
               _buildProfileSection(),
               const SizedBox(height: 20),
               // Menu Items
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 170, 159, 159),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
-                          blurRadius: 15,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    child: _buildMenuList()),
-                ),
-              ),
+              Expanded(child: _buildMenuList(context))
             ],
           ),
         ),
@@ -52,7 +35,8 @@ class ProfileScreen extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 120,
-          margin: const EdgeInsets.only(top: 60), // Space for half of profile image
+          margin:
+              const EdgeInsets.only(top: 60), // Space for half of profile image
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -111,35 +95,36 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
+ 
 
-  Widget _buildMenuList() {
-    final menuItems = [
-      {'icon': Icons.edit_outlined, 'title': 'Edit Profile'},
-      {'icon': Icons.room_service_outlined, 'title': 'Service Taken'},
-      {'icon': Icons.folder_outlined, 'title': 'My Projects'},
-      {'icon': Icons.trending_up_outlined, 'title': 'Work Progress'},
-      {'icon': Icons.receipt_outlined, 'title': 'Invoices'},
-      {'icon': Icons.payment_outlined, 'title': 'Payments'},
-      {'icon': Icons.settings_outlined, 'title': 'App Settings'},
-      {'icon': Icons.support_agent_outlined, 'title': 'Raise Ticket'},
-    ];
+Widget _buildMenuList(BuildContext context) {
+  final menuItems = [
+    {'icon': Icons.edit_outlined, 'title': 'Edit Profile', 'route': '/edit-profile'},
+    {'icon': Icons.room_service_outlined, 'title': 'Service Taken', 'route': '/service-taken'},
+    {'icon': Icons.folder_outlined, 'title': 'My Projects', 'route': '/my-projects'},
+    {'icon': Icons.trending_up_outlined, 'title': 'Work Progress', 'route': '/work-progress'},
+    {'icon': Icons.receipt_outlined, 'title': 'Invoices', 'route': '/invoices'},
+    {'icon': Icons.payment_outlined, 'title': 'Payments', 'route': '/payments'},
+    {'icon': Icons.settings_outlined, 'title': 'App Settings', 'route': '/app-settings'},
+    {'icon': Icons.support_agent_outlined, 'title': 'Raise Ticket', 'route': '/raise-ticket'},
+  ];
 
-    return ListView.separated(
-      itemCount: menuItems.length,
-      separatorBuilder: (context, index) => const SizedBox(height: 8),
-      itemBuilder: (context, index) {
-        final item = menuItems[index];
-        return _buildMenuItem(
-          icon: item['icon'] as IconData,
-          title: item['title'] as String,
-          onTap: () {
-            // Handle navigation here
-            print('Tapped on ${item['title']}');
-          },
-        );
-      },
-    );
-  }
+  return ListView.separated(
+    itemCount: menuItems.length,
+    separatorBuilder: (context, index) => const SizedBox(height: 8),
+    itemBuilder: (context, index) {
+      final item = menuItems[index];
+      return _buildMenuItem(
+        icon: item['icon'] as IconData,
+        title: item['title'] as String,
+        onTap: () {
+          // Navigate using context.push
+          context.push(item['route'] as String);
+        },
+      );
+    },
+  );
+}
 
   Widget _buildMenuItem({
     required IconData icon,
