@@ -8,6 +8,8 @@ import 'package:user_side_team_frontend/models/course/course_screen.dart';
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_view.dart';
 
+import '../profile/view/account.dart';
+
 class BottomNavigationBarView extends StatefulWidget {
   @override
   State<BottomNavigationBarView> createState() =>
@@ -21,12 +23,13 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static final List<Widget> _widgetOptions = <Widget>[
     //  const Text('Coursess', style: optionStyle),
-     CourseScreen(),
+     const CourseScreen(),
     ProjectView(),
     const HomeScreen(),
     const CaseStudyView(),
     // Text("case study", style: optionStyle),
     const Text('Profile', style: optionStyle),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
