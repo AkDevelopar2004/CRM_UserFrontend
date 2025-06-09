@@ -1,12 +1,18 @@
-
 // adding app images
 class AppImages {
-    static const String splashIcon = "assets/images/spash_icon.png";
-    static const String profileImage = "assets/images/profile_image.png";
-    static const String caseStudyImg = "assets/images/case_study_img.png";
-    static const String projectImg = "assets/images/project_img.png";
-    static const String loginImg = "assets/images/login_img.png";
-} 
+  static const String splashIcon = "assets/images/spash_icon.png";
+  static const String profileImage = "assets/images/profile_image.png";
+  static const String caseStudyImg = "assets/images/case_study_img.png";
+  static const String projectImg = "assets/images/project_img.png";
+  static const String loginImg = "assets/images/login_img.png";
+  static const String flutterImage = "assets/images/flutter.png";
+  static const String nodeImg = "assets/images/nodejs.png";
+  static const String androidImg = "assets/images/android.png";
+  static const String playstoreImg = "assets/images/playstore.png";
+  static const String ecommerssImg = "assets/images/e-commerce.png";
+  static const String travelImg = "assets/images/travel.png";
+  
+}
 
 // here add svg icons
 class AppIcons {
@@ -17,28 +23,30 @@ class AppIcons {
   static const String bookIcon = "assets/images/book_icon.svg";
   static const String documenticon = "assets/images/document_icon.svg";
   static const String profileIcon = "assets/images/profile_icon.svg";
-  static const String receiptSearchIcon = "assets/images/receipt-search_icon.svg";
+  static const String receiptSearchIcon =
+      "assets/images/receipt-search_icon.svg";
   static const String homeIcon = "assets/images/home.svg";
   static const String notificationIcon = "assets/images/notification_icon.svg";
   static const String searchIcon = "assets/images/search_icon.svg";
-  
-  // case study icon 
+
+  // case study icon
   static const String filterIcon = "assets/images/filter_icon.svg";
   static const String cancelIcon = "assets/images/cancel_icon.svg";
   static const String photoIcon = "assets/images/photo_icon.svg";
   static const String videoIcon = "assets/images/video_icon.svg";
 
-  // project view icons 
+  // project view icons
   static const String redymadeIcon = "assets/images/redymade_icon.svg";
-  static const String sendReferencesIcon = "assets/images/send_reference_icon.svg";
-   
+  static const String sendReferencesIcon =
+      "assets/images/send_reference_icon.svg";
+
   static const String internetImgIcon = "assets/images/internet_img_icon.svg";
 
-     static List<String> bottomNavIconPaths = [
-     messageQusIcon,
-     walletIcon,
-     warningIcon,
-     warningIcon,
-     bookIcon
+  static List<String> bottomNavIconPaths = [
+    messageQusIcon,
+    walletIcon,
+    warningIcon,
+    warningIcon,
+    bookIcon
   ];
 }

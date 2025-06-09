@@ -7,6 +7,8 @@ import 'package:user_side_team_frontend/models/case_study/view/case_study_view.d
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_view.dart';
 
+import '../profile/view/account.dart';
+
 class BottomNavigationBarView extends StatefulWidget {
   @override
   State<BottomNavigationBarView> createState() =>
@@ -24,7 +26,7 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView> {
      const HomeScreen(),
      const CaseStudyView(),
     // Text("case study", style: optionStyle),
-     const Text('Profile', style: optionStyle),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

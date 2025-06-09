@@ -9,9 +9,12 @@ import 'package:user_side_team_frontend/models/case_study/view/detail_case_study
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
+import 'package:user_side_team_frontend/models/profile/view/account.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
+
+import '../../models/auth/view/change_password_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -34,6 +37,9 @@ class AppRouter {
       ),
       GoRoute(path:  AppRoutes.verifyOtp,
         builder: (context, state) => const VerifyOtpScreen(),
+      ),
+      GoRoute(path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
       GoRoute(
         path: AppRoutes.homeScreen,
@@ -62,6 +68,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.sendReferenceView,
         builder: (context, state) => SendReferenceView(),
+      ),
+       GoRoute(
+        path: AppRoutes.profileView,
+        builder: (context, state) => ProfileScreen(),
       ),
     ],
   );

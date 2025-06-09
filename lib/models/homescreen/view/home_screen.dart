@@ -60,14 +60,14 @@ class HomeScreen extends StatelessWidget {
               'Nitish Tao',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.blue,
+                color: Color.fromRGBO(119, 92, 255, 1),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ],
         ),
         const Spacer(),
-       GestureDetector(
+        GestureDetector(
             onTap: () {
               context.push(AppRoutes.notification);
             },
@@ -95,52 +95,88 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _categoryChips() {
-    final categories = [
-      {'name': 'Flutter', 'icon': Icons.flutter_dash, 'color': Colors.blue},
-      {'name': 'Node.Js', 'icon': Icons.code, 'color': Colors.green},
-      {'name': 'Android', 'icon': Icons.android, 'color': Colors.lightGreen},
-      {'name': 'Play Store', 'icon': Icons.play_arrow, 'color': Colors.blue},
-      {'name': 'E-Commerce', 'icon': Icons.shopping_cart, 'color': Colors.orange},
-      {'name': 'Travel', 'icon': Icons.flight, 'color': Colors.cyan},
-    ];
+Widget _categoryChips() {
+  final categories = [
+    {
+      
+      'icon': Image.asset(
+        AppImages.flutterImage,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },
+    {
+      
+      'icon': Image.asset(
+        AppImages.nodeImg,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },
+    {
+      
+      'icon': Image.asset(
+        AppImages.androidImg,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },
+    {
+      
+      'icon': Image.asset(
+        AppImages.playstoreImg,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },{
+      
+      'icon': Image.asset(
+        AppImages.ecommerssImg,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },{
+      
+      'icon': Image.asset(
+        AppImages.travelImg,
+        height: 30,
+        width: 85,
+      ),
+      'color': Colors.blue,
+    },
+    // पुढे इतर categories uncomment करून वापरू शकता
+  ];
 
-    return Wrap(
-      spacing: 10,
-      runSpacing: 10,
-      children: categories.map((category) {
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            color: (category['color'] as Color).withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: (category['color'] as Color).withOpacity(0.3),
-            ),
+  return Wrap(
+    spacing: 10,
+    runSpacing: 10,
+    children: categories.map((category) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white,
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                category['icon'] as IconData,
-                size: 16,
-                color: category['color'] as Color,
-              ),
-              const SizedBox(width: 6),
-              Text(
-                category['name'] as String,
-                style: TextStyle(
-                  color: category['color'] as Color,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
-    );
-  }
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            category['icon'] as Widget,
+            
+           
+          ],
+        ),
+      );
+    }).toList(),
+  );
+}
 
   Widget _recommendedSection() {
     return Column(
@@ -162,7 +198,7 @@ class HomeScreen extends StatelessWidget {
               child: const Text(
                 'See All >',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Color.fromRGBO(119, 92, 255, 1),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -253,92 +289,85 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _courseCard({
-    required String title,
-    required String price,
-    required String duration,
-    required String thumbnailUrl,
-    VoidCallback? onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 200,
-        margin: const EdgeInsets.only(right: 15),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
+Widget _courseCard({
+  required String title,
+  required String price,
+  required String duration,
+  required String thumbnailUrl,
+}) {
+  return Container(
+    width: 250,
+    margin: const EdgeInsets.only(right: 12),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black12,
+          blurRadius: 4,
+          offset: Offset(0, 2),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Thumbnail image
-            Container(
-              height: 120,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8),
-                  topRight: Radius.circular(8),
-                ),
-                image: DecorationImage(
-                  image: NetworkImage(thumbnailUrl),
-                  fit: BoxFit.cover,
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+          child: Image.network(
+            thumbnailUrl,
+            height: 100,
+            width: double.infinity,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Container(
+              height: 100,
+              color: Colors.grey.shade200,
+              child: const Center(child: Icon(Icons.image_outlined, size: 40, color: Colors.grey)),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
                 ),
               ),
-            ),
-            // Content section
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black87,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-                  Column(
-                    children: [
-                      Text(
-                        duration,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      
-                      Text(
-                        price,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              const SizedBox(height: 6),
+              Text(
+                duration,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade600,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 4),
+              Text(
+                price,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF6A5AE0), // same purple as your screenshot
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      ],
+    ),
+  );
+}
 
   Widget _topCourseCard({
     required String title,
