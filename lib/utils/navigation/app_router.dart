@@ -11,6 +11,7 @@ import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart'
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
 import 'package:user_side_team_frontend/models/profile/view/account.dart';
+import 'package:user_side_team_frontend/models/profile/view/edit_profile_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
@@ -80,6 +81,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.aboutCourse,
         builder: (context, state) => const AboutCourse(),
+      ),
+       GoRoute(
+        path: AppRoutes.editProfileScreen,
+        builder: (context, state) => EditProfileScreen(),
       ),
     ],
   );

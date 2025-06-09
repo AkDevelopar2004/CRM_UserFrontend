@@ -17,4 +17,5 @@ class AppRoutes {
    static const String profileView="/profile-view";
    static const String aboutCourse="/about-course";
 
+   static const String editProfileScreen='/edit-profile';
 }
