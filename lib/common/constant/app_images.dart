@@ -5,13 +5,13 @@ class AppImages {
   static const String caseStudyImg = "assets/images/case_study_img.png";
   static const String projectImg = "assets/images/project_img.png";
   static const String loginImg = "assets/images/login_img.png";
+  static const String checkImg = "assets/images/check.png";
   static const String flutterImage = "assets/images/flutter.png";
   static const String nodeImg = "assets/images/nodejs.png";
   static const String androidImg = "assets/images/android.png";
   static const String playstoreImg = "assets/images/playstore.png";
   static const String ecommerssImg = "assets/images/e-commerce.png";
   static const String travelImg = "assets/images/travel.png";
-  
 }
 
 // here add svg icons
