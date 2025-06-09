@@ -10,6 +10,8 @@ import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart'
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
 import 'package:user_side_team_frontend/models/profile/view/account.dart';
+import 'package:user_side_team_frontend/models/profile/view/invoice_view.dart';
+import 'package:user_side_team_frontend/models/profile/view/servicesTaken_view.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
@@ -72,6 +74,14 @@ class AppRouter {
        GoRoute(
         path: AppRoutes.profileView,
         builder: (context, state) => ProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.servicestakenview,
+        builder: (context, state) => const ServicesTakenScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.Invoicesview,
+        builder: (context, state) => const InvoicesScreen(),
       ),
     ],
   );
