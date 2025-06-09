@@ -15,7 +15,6 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +45,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           ),
         ),
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,35 +53,38 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           children: [
             Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-crossAxisAlignment: CrossAxisAlignment.start, 
-                children: [
-                  const TextWidget(text: 'New password', fontSize: 14, fontWeight: FontWeight.normal),
-                  const SizedBox(height: 8),
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const TextWidget(
+                        text: 'New password',
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal),
+                    const SizedBox(height: 8),
                     const TextFormFieldWidget(
-                  hintText: "Enter new password",
-                  isPassword: true,
-                ),
-                const SizedBox(height: 16),
-                const TextWidget(text: 'Confirm password', fontSize: 14, fontWeight: FontWeight.normal),
-                  const TextFormFieldWidget(
-                  hintText: "Confirm your new password",
-                  isPassword: true,
-                ),
-                const SizedBox(height: 40),
-
-                 ButtonWidget(
-                  borderRadius: 20,
-                  backgroundColor: AppColors.blueColor,
-                 onClick: () {
-  _showPasswordChangedDialog(context);
-},
-
-                  text: 'Change Password',
-                  textColor: Colors.white,
-                ),
-                ]
-              ),
+                      hintText: "Enter new password",
+                      isPassword: true,
+                    ),
+                    const SizedBox(height: 16),
+                    const TextWidget(
+                        text: 'Confirm password',
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal),
+                    const TextFormFieldWidget(
+                      hintText: "Confirm your new password",
+                      isPassword: true,
+                    ),
+                    const SizedBox(height: 40),
+                    ButtonWidget(
+                      borderRadius: 20,
+                      backgroundColor: AppColors.blueColor,
+                      onClick: () {
+                        _showPasswordChangedDialog(context);
+                      },
+                      text: 'Change Password',
+                      textColor: Colors.white,
+                    ),
+                  ]),
             )
           ],
         ),

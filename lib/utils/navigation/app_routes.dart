@@ -19,4 +19,5 @@ class AppRoutes {
    static const String Invoicesview="/invoices-view";
 
 
+   static const String editProfileScreen='/edit-profile';
 }

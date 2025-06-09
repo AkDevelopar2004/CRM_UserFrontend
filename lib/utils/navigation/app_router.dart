@@ -10,13 +10,14 @@ import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart'
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
 import 'package:user_side_team_frontend/models/profile/view/account.dart';
-import 'package:user_side_team_frontend/models/profile/view/invoice_view.dart';
-import 'package:user_side_team_frontend/models/profile/view/servicesTaken_view.dart';
+import 'package:user_side_team_frontend/models/profile/view/edit_profile_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../models/auth/view/change_password_screen.dart';
+import '../../models/profile/view/invoice_view.dart';
+import '../../models/profile/view/servicesTaken_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -83,6 +84,11 @@ class AppRouter {
         path: AppRoutes.Invoicesview,
         builder: (context, state) => const InvoicesScreen(),
       ),
+       GoRoute(
+        path: AppRoutes.editProfileScreen,
+        builder: (context, state) => const InvoicesScreen(),
+      ),
+
     ],
   );
 }
