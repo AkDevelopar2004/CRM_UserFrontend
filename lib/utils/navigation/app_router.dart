@@ -110,6 +110,18 @@ class AppRouter {
           return const MyProjectsScreen();
         },
       ),
+      GoRoute(
+        path: AppRoutes.appsettingview,
+        builder: (context, state) => const AppSettingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.notificationview,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      //  GoRoute(
+      //   path: AppRoutes.privacyview,
+      //   builder: (context, state) =>  PrivacyScreen(),
+      // ),
     ],
   );
 }
