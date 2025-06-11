@@ -8,7 +8,7 @@ import 'package:user_side_team_frontend/models/course/course_screen.dart';
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_view.dart';
 
-import '../profile/view/account.dart';
+import '../profile/view/profile_account.dart';
 
 class BottomNavigationBarView extends StatefulWidget {
   @override
@@ -28,7 +28,8 @@ class _BottomNavigationBarViewState extends State<BottomNavigationBarView> {
     const HomeScreen(),
     const CaseStudyView(),
     // Text("case study", style: optionStyle),
-    const Text('Profile', style: optionStyle),
+    // const Text('Profile', style: optionStyle),
+    
     const ProfileScreen(),
   ];
 

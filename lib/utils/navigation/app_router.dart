@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/models/auth/view/forgot_password.dart';
 import 'package:user_side_team_frontend/models/auth/view/login_screen.dart';
@@ -10,14 +11,16 @@ import 'package:user_side_team_frontend/models/about_course/view/about_course.da
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
-import 'package:user_side_team_frontend/models/profile/view/account.dart';
+import 'package:user_side_team_frontend/models/profile/view/profile_account.dart';
 import 'package:user_side_team_frontend/models/profile/view/edit_profile_screen.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../models/auth/view/change_password_screen.dart';
+import '../../models/profile/profile_controller/profile_controller.dart';
 import '../../models/profile/view/invoice_view.dart';
+import '../../models/profile/view/my_projects.dart';
 import '../../models/profile/view/servicesTaken_view.dart';
 
 class AppRouter {
@@ -89,14 +92,20 @@ class AppRouter {
         builder: (context, state) => const ServicesTakenScreen(),
       ),
       GoRoute(
-        path: AppRoutes.Invoicesview,
+        path: AppRoutes.invoicesview,
         builder: (context, state) => const InvoicesScreen(),
       ),
-       GoRoute(
+      GoRoute(
         path: AppRoutes.editProfileScreen,
-        builder: (context, state) => const InvoicesScreen(),
+        builder: (context, state) => const EditProfileScreen(),
       ),
-
+      GoRoute(
+        path: AppRoutes.myProjectsScreen,
+        builder: (context, state) {
+          Get.lazyPut<ProjectController>(() => ProjectController());
+          return const MyProjectsScreen();
+        },
+      ),
     ],
   );
 }

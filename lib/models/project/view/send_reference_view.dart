@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/constant/app_images.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
+import '../../../common/widgets/button_widget.dart';
 
 class SendReferenceView extends StatelessWidget {
   const SendReferenceView({super.key});
@@ -13,81 +14,99 @@ class SendReferenceView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        clipBehavior: Clip.none,
         elevation: 0,
         titleSpacing: 0,
-        // excludeHeaderSemantics: false,
-        forceMaterialTransparency: false,
-
         title: Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: SvgPicture.asset(AppIcons.backArrowIcon)),
+                onTap: () => context.pop(),
+                child: SvgPicture.asset(AppIcons.backArrowIcon),
+              ),
               const TextWidget(
-                text: "Readymade",
+                text: "Send Reference",
                 color: AppColors.blackColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
-              SizedBox(
-                width: 20,
-              ),
+              const SizedBox(width: 20), // Placeholder for alignment
             ],
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
-            child: Align(
-              alignment: Alignment.center,
-              child: TextWidget(
-                text: "Send the reference link of any website, app or software",
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: AppColors.blackColor,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: SvgPicture.asset(AppIcons.internetImgIcon)),
-          Column(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16),
-              TextWidget(text: "Share it with your team"),
-              SizedBox(height: 8),
-              TextWidget(text: "We'll send you an email with the link"),
-              SizedBox(height: 8),
-              TextWidget(
+              const Align(
+                alignment: Alignment.center,
+                child: TextWidget(
                   text:
-                      "Once the link is sent, you'll receive a confirmation email"),
-              SizedBox(height: 8),
-              TextWidget(text: "Click on the link to open the website"),
-              SizedBox(height: 8),
-              TextWidget(text: "Enjoy your new website!"),
-              SizedBox(height: 8),
-              TextWidget(
-                  text: "Please note that this link is valid for 24 hours"),
-              SizedBox(height: 8),
-              TextWidget(
-                  text:
-                      "If you need any further assistance, please let us know"),
-              SizedBox(height: 8),
-              TextWidget(text: "Thank you for using Readymade!"),
+                      "Send the reference link of any website, app or software",
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.blackColor,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Align(
+                alignment: Alignment.center,
+                child: SvgPicture.asset(AppIcons.internetImgIcon),
+              ),
+              const SizedBox(height: 24),
+              const TextWidget(text: 'Name'),
+              const SizedBox(height: 8),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: "Enter your name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const TextWidget(text: 'Mobile'),
+              const SizedBox(height: 8),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: "Enter Mobile number",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const TextWidget(text: 'Email'),
+              const SizedBox(height: 8),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter mobile number",
+                ),
+              ),
+              const SizedBox(height: 16),
+              const TextWidget(text: 'Enter link or URL'),
+              const SizedBox(height: 8),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: "",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 32),
+              ButtonWidget(
+                borderRadius: 20,
+                backgroundColor: AppColors.blueColor,
+                onClick: () {
+                  // Submit logic here
+                },
+                text: 'Submit',
+                textColor: Colors.white,
+              ),
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
