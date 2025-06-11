@@ -109,22 +109,7 @@ class AppRouter {
           Get.lazyPut<ProjectController>(() => ProjectController());
           return const MyProjectsScreen();
         },
-      ),
-        GoRoute(
-        path: AppRoutes.quizscreen,
-        builder: (context, state) => const QuizScreen(),
-      ),
-        GoRoute(
-        path: AppRoutes.questionScreen,
-        builder: (context, state) {
-          Get.lazyPut<QuestionController>(() => QuestionController());
-          return  QuestionScreen();
-        },
-      ),
-        GoRoute(
-        path: AppRoutes.congratesScreen,
-        builder: (context, state) => const CongratesScreen(),
-      ),
+      )
     ],
   );
 }
