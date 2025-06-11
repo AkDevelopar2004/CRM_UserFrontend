@@ -6,7 +6,7 @@ import 'package:user_side_team_frontend/models/auth/view/splash_screen.dart';
 import 'package:user_side_team_frontend/models/auth/view/verify_otp_screen.dart';
 import 'package:user_side_team_frontend/models/bottom_navigation/bottom_navigation_bar.dart';
 import 'package:user_side_team_frontend/models/case_study/view/detail_case_study_view.dart';
-import 'package:user_side_team_frontend/models/course/widget/about_course.dart';
+import 'package:user_side_team_frontend/models/about_course/view/about_course.dart';
 import 'package:user_side_team_frontend/models/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
