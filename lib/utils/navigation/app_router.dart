@@ -126,9 +126,21 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRoutes.quizscreen,
+        builder: (context, state) => const QuizScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.questionScreen,
+        builder: (context, state) {
+          Get.lazyPut<QuestionController>(() => QuestionController());
+          return QuestionScreen();
+        },
+      ),
+      GoRoute(
         path: AppRoutes.congratesScreen,
         builder: (context, state) => const CongratesScreen(),
       ),
+      GoRoute(
         path: AppRoutes.appsettingview,
         builder: (context, state) => const AppSettingScreen(),
       ),
