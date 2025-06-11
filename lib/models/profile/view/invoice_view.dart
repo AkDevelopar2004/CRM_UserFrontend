@@ -42,7 +42,8 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
             color: AppColors.blackColor,
           ),
         ),
-        body: Padding(
+        body:
+         Padding(
           padding: const EdgeInsets.all(15.0),
           child: GridView.builder(
             itemCount: 4,

@@ -16,7 +16,14 @@ class AppRoutes {
    static const String sendReferenceView = "/send-reference-view";
    static const String profileView="/profile-view";
    static const String servicestakenview="/services-view";
-   static const String Invoicesview="/invoices-view";
+   static const String invoicesview="/invoices-view";
+   static const String paymentsview="/payments-view";
+   static const String notificationview="/notifications-view";
+  static const String appsettingview= '/app-settings-view';
+  static const String privacyview= '/privacy-view';
+
+
+
 
 
    static const String editProfileScreen='/edit-profile';

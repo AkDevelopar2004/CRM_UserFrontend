@@ -11,12 +11,15 @@ import 'package:user_side_team_frontend/models/notification/notification_detail_
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
 import 'package:user_side_team_frontend/models/profile/view/account.dart';
 import 'package:user_side_team_frontend/models/profile/view/edit_profile_screen.dart';
+import 'package:user_side_team_frontend/models/profile/view/payments_screem.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../models/auth/view/change_password_screen.dart';
+import '../../models/profile/view/appsettings_view.dart';
 import '../../models/profile/view/invoice_view.dart';
+import '../../models/profile/view/notificationSettings_view.dart';
 import '../../models/profile/view/servicesTaken_view.dart';
 
 class AppRouter {
@@ -81,13 +84,30 @@ class AppRouter {
         builder: (context, state) => const ServicesTakenScreen(),
       ),
       GoRoute(
-        path: AppRoutes.Invoicesview,
+        path: AppRoutes.invoicesview,
         builder: (context, state) => const InvoicesScreen(),
       ),
        GoRoute(
         path: AppRoutes.editProfileScreen,
         builder: (context, state) => const InvoicesScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.paymentsview,
+        builder: (context, state) => const PaymentsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.appsettingview,
+        builder: (context, state) => const AppSettingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.notificationview,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      //  GoRoute(
+      //   path: AppRoutes.privacyview,
+      //   builder: (context, state) =>  PrivacyScreen(),
+      // ),
+
 
     ],
   );

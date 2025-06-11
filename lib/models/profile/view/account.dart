@@ -104,8 +104,8 @@ Widget _buildMenuList(BuildContext context) {
     {'icon': Icons.folder_outlined, 'title': 'My Projects', 'route': '/my-projects'},
     {'icon': Icons.trending_up_outlined, 'title': 'Work Progress', 'route': '/work-progress'},
     {'icon': Icons.receipt_outlined, 'title': 'Invoices', 'route': '/invoices'},
-    {'icon': Icons.payment_outlined, 'title': 'Payments', 'route': '/payments'},
-    {'icon': Icons.settings_outlined, 'title': 'App Settings', 'route': '/app-settings'},
+    {'icon': Icons.payment_outlined, 'title': 'Payments', 'route': '/payments-view'},
+    {'icon': Icons.settings_outlined, 'title': 'App Settings', 'route': '/app-settings-view'},
     {'icon': Icons.support_agent_outlined, 'title': 'Raise Ticket', 'route': '/raise-ticket'},
   ];
 
