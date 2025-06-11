@@ -116,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
       {
         'icon': Icons.trending_up_outlined,
         'title': 'Work Progress',
-        // 'route': '/work-progress'
+        'route': '/work-progress'
       },
       {
         'icon': Icons.receipt_outlined,
@@ -126,17 +126,17 @@ class ProfileScreen extends StatelessWidget {
       {
         'icon': Icons.payment_outlined,
         'title': 'Payments',
-        // 'route': '/payments'
+        'route': '/payments'
       },
       {
         'icon': Icons.settings_outlined,
         'title': 'App Settings',
-        // 'route': '/app-settings'
+        'route': '/app-settings'
       },
       {
         'icon': Icons.support_agent_outlined,
         'title': 'Raise Ticket',
-        // 'route': '/raise-ticket'
+        'route': '/raise-ticket'
       },
     ];
 
