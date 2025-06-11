@@ -3,8 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
+import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
+import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about.dart';
+import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about_course_sub_tab.dart';
 
 import '../../../common/constant/app_images.dart';
+import '../../../utils/navigation/app_routes.dart';
 import '../about_course_sub_tab/about_course_sub_tab.dart';
 
 class AboutCourse extends StatelessWidget {
@@ -13,6 +17,33 @@ class AboutCourse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        clipBehavior: Clip.none,
+        elevation: 0,
+        titleSpacing: 0,
+        forceMaterialTransparency: false,
+        title: Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () => context.pop(),
+                child: SvgPicture.asset(AppIcons.backArrowIcon),
+              ),
+              const TextWidget(
+                text: "Topic Of Video Series",
+                color: AppColors.blackColor,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              const SizedBox(width: 20),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -26,29 +57,29 @@ class AboutCourse extends StatelessWidget {
                       context.pop();
                     },
                     child: Container(
-                      // padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: SvgPicture.asset(
                         AppIcons.backArrowIcon,
-                        width: 40,
-                        height: 40,
+                        width: 20,
+                        height: 20,
                       ),
                     ),
                   ),
                   const SizedBox(width: 16),
-                  const Expanded(
-                    child: Text(
-                      "Topic Of Video Series",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ),
+                  // const Expanded(
+                  //   child: Text(
+                  //     "Topic Of Video Series",
+                  //     style: TextStyle(
+                  //       fontSize: 12,
+                  //       fontWeight: FontWeight.w400,
+                  //       color: Colors.black87,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -88,13 +119,18 @@ class AboutCourse extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Title section
-                          const Text(
-                            "What is New in\nNode.Js",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              height: 1.3,
+                          InkWell(
+                            onTap: () {
+                              context.push(AppRoutes.quizscreen);
+                            },
+                            child: const Text(
+                              "What is New in\nNode.Js",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                height: 1.3,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 8),

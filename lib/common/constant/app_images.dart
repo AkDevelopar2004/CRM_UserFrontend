@@ -14,7 +14,7 @@ class AppImages {
   static const String travelImg = "assets/images/travel.png";
   static const String webImg = "assets/images/Web.png";
   static const String pdfImg = "assets/images/pdf 1.png";
-
+  static const String congratesImg = "assets/images/congrates.png";
 }
 
 // here add svg icons
