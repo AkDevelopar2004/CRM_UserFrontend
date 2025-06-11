@@ -18,7 +18,7 @@ class _CourseScreenState extends State<CourseScreen> {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: CourseHorizontalSection(),
         ),
         Expanded(
@@ -29,7 +29,9 @@ class _CourseScreenState extends State<CourseScreen> {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                    context.push(AppRoutes.aboutCourse);
+                    context.push(
+                      AppRoutes.aboutCourse,
+                    );
                   },
                   child: const Column(
                     children: [
