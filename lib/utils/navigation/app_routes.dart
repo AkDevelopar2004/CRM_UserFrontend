@@ -18,6 +18,15 @@ class AppRoutes {
    static const String aboutCourse="/about-course";
    static const String servicestakenview="/services-view";
    static const String invoicesview="/invoices-view";
+   static const String paymentsview="/payments-view";
+   static const String notificationview="/notifications-view";
+  static const String appsettingview= '/app-settings-view';
+  static const String privacyview= '/privacy-view';
+
+
+
+
+
    static const String editProfileScreen='/edit-profile';
    static const String myProjectsScreen = '/my-projects';
   static const String quizscreen = '/quiz-screen';

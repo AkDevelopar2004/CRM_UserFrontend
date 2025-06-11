@@ -16,12 +16,16 @@ import 'package:user_side_team_frontend/models/notification/notification_detail_
 import 'package:user_side_team_frontend/models/notification/notification_view.dart';
 import 'package:user_side_team_frontend/models/profile/view/profile_account.dart';
 import 'package:user_side_team_frontend/models/profile/view/edit_profile_screen.dart';
+import 'package:user_side_team_frontend/models/profile/view/payments_screem.dart';
 import 'package:user_side_team_frontend/models/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../models/about_course/controller/quiz_controller.dart';
 import '../../models/auth/view/change_password_screen.dart';
+import '../../models/profile/view/appsettings_view.dart';
+import '../../models/profile/view/invoice_view.dart';
+import '../../models/profile/view/notificationSettings_view.dart';
 import '../../models/profile/profile_controller/profile_controller.dart';
 import '../../models/profile/view/invoice_view.dart';
 import '../../models/profile/view/my_projects.dart';
@@ -125,6 +129,17 @@ class AppRouter {
         path: AppRoutes.congratesScreen,
         builder: (context, state) => const CongratesScreen(),
       ),
+        path: AppRoutes.appsettingview,
+        builder: (context, state) => const AppSettingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.notificationview,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      //  GoRoute(
+      //   path: AppRoutes.privacyview,
+      //   builder: (context, state) =>  PrivacyScreen(),
+      // ),
     ],
   );
 }
