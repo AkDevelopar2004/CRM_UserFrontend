@@ -20,6 +20,10 @@ class AppRoutes {
    static const String invoicesview="/invoices-view";
    static const String editProfileScreen='/edit-profile';
    static const String myProjectsScreen = '/my-projects';
+   static const String communityguideLines ='/community-guidelines';
+   static const String support ='/support';
+
+
 
 
 }
