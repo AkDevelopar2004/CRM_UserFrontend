@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:user_side_team_frontend/common/constant/app_colors.dart';
+import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
+import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
 
 class AboutCourseSubTab extends StatefulWidget {
   const AboutCourseSubTab({super.key});
@@ -7,7 +10,8 @@ class AboutCourseSubTab extends StatefulWidget {
   State<AboutCourseSubTab> createState() => _AboutCourseSubTabState();
 }
 
-class _AboutCourseSubTabState extends State<AboutCourseSubTab> with SingleTickerProviderStateMixin {
+class _AboutCourseSubTabState extends State<AboutCourseSubTab>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -51,7 +55,7 @@ class _AboutCourseSubTabState extends State<AboutCourseSubTab> with SingleTicker
             ],
           ),
         ),
-        
+
         // TabBar
         TabBar(
           controller: _tabController,
@@ -73,9 +77,9 @@ class _AboutCourseSubTabState extends State<AboutCourseSubTab> with SingleTicker
             Tab(text: "Reviews"),
           ],
         ),
-        
+
         const SizedBox(height: 16),
-        
+
         // TabBarView
         SizedBox(
           height: 300,
@@ -93,273 +97,243 @@ class _AboutCourseSubTabState extends State<AboutCourseSubTab> with SingleTicker
   }
 
   Widget _buildAboutTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Course Description",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            "Learn the latest features and updates in Node.js. This comprehensive course covers everything from basic concepts to advanced topics, helping you master modern Node.js development.",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey.shade700,
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            "What you'll learn:",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 8),
-          ...List.generate(
-            4,
-            (index) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.check_circle,
-                    color: Color(0xFF7C3AED),
-                    size: 16,
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      "Modern Node.js features and best practices",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey.shade700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCurriculumTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: List.generate(
-          5,
-          (index) => Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey.shade200),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF7C3AED).withOpacity(0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "${index + 1}",
-                      style: const TextStyle(
-                        color: Color(0xFF7C3AED),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Chapter ${index + 1}: Introduction to Node.js",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        "Duration: 8 mins",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Icon(
-                  Icons.play_circle_outline,
-                  color: Color(0xFF7C3AED),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildReviewsTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: List.generate(
-          3,
-          (index) => Container(
-            margin: const EdgeInsets.only(bottom: 16),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey.shade200),
-            ),
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     CircleAvatar(
-                      radius: 20,
-                      backgroundColor: const Color(0xFF7C3AED).withOpacity(0.1),
-                      child: Text(
-                        "U${index + 1}",
-                        style: const TextStyle(
-                          color: Color(0xFF7C3AED),
-                          fontWeight: FontWeight.w600,
+                      backgroundImage:
+                          AssetImage("assets/images/profile_image.png"),
+                    ),
+                    SizedBoxWidget(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidget(text: "Name of Author"),
+                        SizedBoxWidget(
+                          height: 3,
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "User ${index + 1}",
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Row(
-                            children: List.generate(
-                              5,
-                              (starIndex) => Icon(
-                                Icons.star,
-                                size: 14,
-                                color: starIndex < 4
-                                    ? Colors.amber
-                                    : Colors.grey.shade300,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        TextWidget(
+                          text: "Designation",
+                          color: AppColors.blueColor,
+                        ),
+                      ],
+                    )
                   ],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  "Great course! Really helped me understand the new features in Node.js.",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey.shade700,
-                  ),
+                SizedBoxWidget(height: 7),
+                TextWidget(
+                  text: "About Course",
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+                TextWidget(
+                  text:
+                      "Loream epsuem this is a about the course realted information you can search on the google and also you can get good information about the projects and many things so do.",
                 ),
               ],
             ),
           ),
         ),
-      ),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(16),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF8B5CF6),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Text(
+              'Enroll Course- ₹ 299',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-  Widget _buildResourcesTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: List.generate(
-          4,
-          (index) => Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey.shade200),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF7C3AED).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Icons.insert_drive_file,
-                    color: Color(0xFF7C3AED),
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildCurriculumTab() {
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            child: Column(
+              children: List.generate(
+                5,
+                (index) => Container(
+                  child: Row(
                     children: [
-                      Text(
-                        "Resource ${index + 1}.pdf",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 7),
+                        width: 80,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: AppColors.greenTextColor,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: TextWidget(
+                            text: "node js",
+                            color: AppColors.whiteColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        "Course material",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                      SizedBoxWidget(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidget(
+                              text: "Episode name",
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            SizedBoxWidget(height: 4),
+                            TextWidget(
+                              text: '18:32 mins',
+                              fontSize: 12,
+                              color: AppColors.greyColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.play_arrow,
+                          color: AppColors.feadGreyOrgColor,
+                          size: 20,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
-                  Icons.download,
-                  color: Color(0xFF7C3AED),
-                ),
-              ],
+              ),
             ),
           ),
         ),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(16),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF8B5CF6),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Text(
+              'Enroll Course- ₹ 299',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildReviewsTab() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text(
+                '4.7',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Row(
+                children: List.generate(5, (index) {
+                  return Icon(
+                    Icons.star,
+                    color: index < 4
+                        ? const Color(0xFFFFA726)
+                        : Colors.grey.shade300,
+                    size: 24,
+                  );
+                }),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          _buildRatingBar('5 Star', 0.8),
+          const SizedBox(height: 8),
+          _buildRatingBar('4 Star', 0.9),
+          const SizedBox(height: 8),
+          _buildRatingBar('3 Star', 0.7),
+          const SizedBox(height: 8),
+          _buildRatingBar('2 Star', 0.3),
+          const SizedBox(height: 8),
+          _buildRatingBar('1 Star', 0.2),
+        ],
       ),
+    );
+  }
+
+  Widget _buildRatingBar(String label, double progress) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            SizedBox(
+              width: 50,
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.shade700,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Container(
+                height: 8,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: FractionallySizedBox(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: progress,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFA726),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

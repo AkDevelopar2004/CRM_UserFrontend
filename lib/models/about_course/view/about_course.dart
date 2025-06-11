@@ -6,10 +6,10 @@ import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
 import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about.dart';
 import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about_course_sub_tab.dart';
-import 'package:user_side_team_frontend/utils/navigation/app_router.dart';
-import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
 import '../../../common/constant/app_images.dart';
+import '../../../utils/navigation/app_routes.dart';
+import '../about_course_sub_tab/about_course_sub_tab.dart';
 
 class AboutCourse extends StatelessWidget {
   const AboutCourse({super.key});
@@ -49,26 +49,26 @@ class AboutCourse extends StatelessWidget {
           children: [
             // Fixed Header
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
                 children: [
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     context.pop();
-                  //   },
-                  //   child: Container(
-                  //     padding: const EdgeInsets.all(8),
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.grey.shade100,
-                  //       borderRadius: BorderRadius.circular(8),
-                  //     ),
-                  //     child: SvgPicture.asset(
-                  //       AppIcons.backArrowIcon,
-                  //       width: 20,
-                  //       height: 20,
-                  //     ),
-                  //   ),
-                  // ),
+                  GestureDetector(
+                    onTap: () {
+                      context.pop();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: SvgPicture.asset(
+                        AppIcons.backArrowIcon,
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
+                  ),
                   const SizedBox(width: 16),
                   // const Expanded(
                   //   child: Text(
@@ -83,7 +83,7 @@ class AboutCourse extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             // Scrollable Content
             Expanded(
               child: SingleChildScrollView(
@@ -92,7 +92,7 @@ class AboutCourse extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
-                    
+
                     // Course Card
                     Container(
                       width: double.infinity,
@@ -214,9 +214,9 @@ class AboutCourse extends StatelessWidget {
                         ],
                       ),
                     ),
-                    
+
                     const SizedBox(height: 24),
-                    
+
                     // Course Details
                     const Text(
                       "Topic of the Video Series",
@@ -254,13 +254,12 @@ class AboutCourse extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
-                    const SizedBox(height: 16),
-                    
-                    // AboutCourseSubTab - This will now be scrollable
+
+                    const SizedBoxWidget(height: 16),
+
                     const AboutCourseSubTab(),
-                    
-                    const SizedBox(height: 20), // Bottom padding
+
+                    const SizedBoxWidget(height: 20),
                   ],
                 ),
               ),

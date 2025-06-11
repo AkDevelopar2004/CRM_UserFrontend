@@ -35,10 +35,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: SvgPicture.asset(AppIcons.backArrowIcon)),
+                onTap: () {
+                  context.pop();
+                },
+                child: SvgPicture.asset(AppIcons.backArrowIcon),
+              ),
               const TextWidget(
                 text: "Forgot Password",
                 color: AppColors.blackColor,
