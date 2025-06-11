@@ -81,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                       const TextWidget(text: 'Don\'t have an account?'),
                       TextButton(
                         onPressed: () {
-                          context.go('/signup-screen');
+                          context.push(AppRoutes.signupScreen);
                         },
                         child: const TextWidget(
                           text: 'Sign Up!',

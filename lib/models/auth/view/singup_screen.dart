@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/constant/app_colors.dart';
 import '../../../common/constant/app_images.dart';
@@ -75,7 +76,9 @@ class _SingupScreenState extends State<SingupScreen> {
                     ButtonWidget(
                       borderRadius: 20,
                       backgroundColor: AppColors.blueColor,
-                      onClick: () {},
+                      onClick: () {
+                             context.pop();
+                      },
                       text: 'Login',
                       textColor: Colors.white,
                     ),

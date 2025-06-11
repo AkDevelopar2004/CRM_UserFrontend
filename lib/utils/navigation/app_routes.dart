@@ -29,6 +29,8 @@ class AppRoutes {
 
    static const String editProfileScreen='/edit-profile';
    static const String myProjectsScreen = '/my-projects';
-
+  static const String quizscreen = '/quiz-screen';
+  static const String questionScreen = '/question-screen';
+  static const String congratesScreen = '/congrates-screen';
 
 }

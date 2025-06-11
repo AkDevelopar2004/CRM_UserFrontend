@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:user_side_team_frontend/models/about_course/view/congrates_screen.dart';
+import 'package:user_side_team_frontend/models/about_course/view/question_screen.dart';
+import 'package:user_side_team_frontend/models/about_course/view/quiz_screen.dart';
 import 'package:user_side_team_frontend/models/auth/view/forgot_password.dart';
 import 'package:user_side_team_frontend/models/auth/view/login_screen.dart';
 import 'package:user_side_team_frontend/models/auth/view/singup_screen.dart';
@@ -18,6 +21,7 @@ import 'package:user_side_team_frontend/models/project/view/project_readymade_vi
 import 'package:user_side_team_frontend/models/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
 
+import '../../models/about_course/controller/quiz_controller.dart';
 import '../../models/auth/view/change_password_screen.dart';
 import '../../models/profile/view/appsettings_view.dart';
 import '../../models/profile/view/invoice_view.dart';
@@ -111,6 +115,20 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRoutes.quizscreen,
+        builder: (context, state) => const QuizScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.questionScreen,
+        builder: (context, state) {
+          Get.lazyPut<QuestionController>(() => QuestionController());
+          return QuestionScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.congratesScreen,
+        builder: (context, state) => const CongratesScreen(),
+      ),
         path: AppRoutes.appsettingview,
         builder: (context, state) => const AppSettingScreen(),
       ),
