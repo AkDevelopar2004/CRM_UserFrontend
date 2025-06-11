@@ -95,7 +95,6 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
- 
 
 Widget _buildMenuList(BuildContext context) {
   final menuItems = [
@@ -109,22 +108,22 @@ Widget _buildMenuList(BuildContext context) {
     {'icon': Icons.support_agent_outlined, 'title': 'Raise Ticket', 'route': '/raise-ticket'},
   ];
 
-  return ListView.separated(
-    itemCount: menuItems.length,
-    separatorBuilder: (context, index) => const SizedBox(height: 8),
-    itemBuilder: (context, index) {
-      final item = menuItems[index];
-      return _buildMenuItem(
-        icon: item['icon'] as IconData,
-        title: item['title'] as String,
-        onTap: () {
-          // Navigate using context.push
-          context.push(item['route'] as String);
-        },
-      );
-    },
-  );
-}
+    return ListView.separated(
+      itemCount: menuItems.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 8),
+      itemBuilder: (context, index) {
+        final item = menuItems[index];
+        return _buildMenuItem(
+          icon: item['icon'] as IconData,
+          title: item['title'] as String,
+          onTap: () {
+            // Navigate using context.push
+            context.push(item['route'] as String);
+          },
+        );
+      },
+    );
+  }
 
   Widget _buildMenuItem({
     required IconData icon,

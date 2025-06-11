@@ -108,7 +108,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        AppImages.pdfImg, // Replace with your actual icon
+                        AppImages.pdfImg,
                         height: 16,
                         width: 16,
                         fit: BoxFit.contain,
