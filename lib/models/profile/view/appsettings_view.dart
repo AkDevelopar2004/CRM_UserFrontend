@@ -3,10 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/constant/app_images.dart';
-import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
-import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 
+import '../../../utils/navigation/app_routes.dart';
 import 'notificationSettings_view.dart';
 
 class AppSettingScreen extends StatefulWidget {
@@ -70,12 +69,18 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                 _buildSettingsTile(
                   icon: Icons.gavel_outlined,
                   title: 'Community Guidelines',
-                  onTap: () {},
+                  onTap: () {
+                      context.push(AppRoutes.communityguideLines);
+
+                  },
                 ),
                 _buildSettingsTile(
                   icon: Icons.help_outline,
                   title: 'Support',
-                  onTap: () {},
+                  onTap: () {
+                      context.push(AppRoutes.support);
+
+                  },
                 ),
               ],
             ),
