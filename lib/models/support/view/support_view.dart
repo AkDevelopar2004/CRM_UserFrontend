@@ -13,41 +13,28 @@ class SupportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: false,
+        excludeHeaderSemantics: false,
+        toolbarHeight: 80,
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(AppIcons.backArrowIcon)),
+        centerTitle: true,
+        title: const TextWidget(
+          text: "Support",
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: SvgPicture.asset(
-                      AppIcons.backArrowIcon,
-                      width: 40,
-                      height: 40,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 25),
-                const Text(
-                  "Support",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.blackColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Column(
