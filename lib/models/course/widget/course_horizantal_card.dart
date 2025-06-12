@@ -15,7 +15,7 @@ class CourseHorizontalSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 10, bottom: 8),
+          padding: const EdgeInsets.only(left: 10, bottom: 8, top: 7),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -42,7 +42,7 @@ class CourseHorizontalSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 100,
+          height: 70,
           child: ListView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 10),

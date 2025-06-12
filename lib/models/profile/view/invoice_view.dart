@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/constant/app_images.dart';
-import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
-import 'package:user_side_team_frontend/models/notification/notification_detail_screen.dart';
 
 class InvoicesScreen extends StatefulWidget {
   const InvoicesScreen({super.key});

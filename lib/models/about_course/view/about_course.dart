@@ -4,12 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
-import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about.dart';
 import 'package:user_side_team_frontend/models/about_course/about_course_sub_tab/about_course_sub_tab.dart';
 
 import '../../../common/constant/app_images.dart';
 import '../../../utils/navigation/app_routes.dart';
-import '../about_course_sub_tab/about_course_sub_tab.dart';
 
 class AboutCourse extends StatelessWidget {
   const AboutCourse({super.key});
@@ -19,29 +17,20 @@ class AboutCourse extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        clipBehavior: Clip.none,
-        elevation: 0,
-        titleSpacing: 0,
         forceMaterialTransparency: false,
-        title: Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () => context.pop(),
-                child: SvgPicture.asset(AppIcons.backArrowIcon),
-              ),
-              const TextWidget(
-                text: "Topic Of Video Series",
-                color: AppColors.blackColor,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-              const SizedBox(width: 20),
-            ],
-          ),
+        excludeHeaderSemantics: false,
+        toolbarHeight: 80,
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(AppIcons.backArrowIcon)),
+        centerTitle: true,
+        title: const TextWidget(
+          text: "Topic of Video Series",
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
         ),
       ),
       body: SafeArea(
@@ -52,23 +41,6 @@ class AboutCourse extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      context.pop();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: SvgPicture.asset(
-                        AppIcons.backArrowIcon,
-                        width: 20,
-                        height: 20,
-                      ),
-                    ),
-                  ),
                   const SizedBox(width: 16),
                   // const Expanded(
                   //   child: Text(
