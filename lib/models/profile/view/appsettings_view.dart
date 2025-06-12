@@ -52,34 +52,32 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                   icon: Icons.notifications_none,
                   title: 'Notifications',
                   onTap: () {
-                    GoRoute(
-                      path: '/notifications-view',
-                      builder: (context, state) => const NotificationsScreen(),
-                    );
+                    context.push(AppRoutes.notification);
+
+                    // GoRoute(
+                    //   path: '/notifications-view',
+                    //   builder: (context, state) => const NotificationsScreen(),
+                    // );
                     // Handle tap
                   },
                 ),
                 _buildSettingsTile(
                   icon: Icons.privacy_tip_outlined,
                   title: 'Privacy Policy',
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                 ),
                 _buildSettingsTile(
                   icon: Icons.gavel_outlined,
                   title: 'Community Guidelines',
                   onTap: () {
-                      context.push(AppRoutes.communityguideLines);
-
+                    context.push(AppRoutes.communityguideLines);
                   },
                 ),
                 _buildSettingsTile(
                   icon: Icons.help_outline,
                   title: 'Support',
                   onTap: () {
-                      context.push(AppRoutes.support);
-
+                    context.push(AppRoutes.support);
                   },
                 ),
               ],

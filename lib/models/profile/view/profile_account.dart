@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
 Widget _buildMenuList(BuildContext context) {
   final menuItems = [
     {'icon': Icons.edit_outlined, 'title': 'Edit Profile', 'route': '/edit-profile'},
-    {'icon': Icons.room_service_outlined, 'title': 'Service Taken', 'route': '/service-taken'},
+    {'icon': Icons.room_service_outlined, 'title': 'Service Taken', 'route': '/services-view'},
     {'icon': Icons.folder_outlined, 'title': 'My Projects', 'route': '/my-projects'},
     {'icon': Icons.trending_up_outlined, 'title': 'Work Progress', 'route': '/work-progress'},
     {'icon': Icons.receipt_outlined, 'title': 'Invoices', 'route': '/invoices-view'},
