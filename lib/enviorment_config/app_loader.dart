@@ -7,6 +7,8 @@ import '../features/profile/profile_controller/theme_controller.dart';
 import '../utils/dependancy_locator.dart';
 import '../utils/navigation/app_router.dart';
 import 'envoirment_config.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AppLoader {
   void loadApp(String path) async {
