@@ -31,9 +31,6 @@ class AppRoutes {
    static const String myProjectsScreen = '/my-projects';
    static const String communityguideLines ='/community-guidelines';
    static const String support ='/support';
-
-
-
   static const String quizscreen = '/quiz-screen';
   static const String questionScreen = '/question-screen';
   static const String congratesScreen = '/congrates-screen';

@@ -15,6 +15,18 @@ class AppImages {
   static const String webImg = "assets/images/Web.png";
   static const String pdfImg = "assets/images/pdf 1.png";
   static const String congratesImg = "assets/images/congrates.png";
+
+  
+  // snackbar images
+  static const String unionCancleIcon = "assets/images/cancel_icon.svg";
+  static const String greenBubbleIcon = "assets/images/green_bubbles.svg";
+  static const String successToastIcon = "assets/images/success_toast.svg";
+  static const String errorToastIcon = "assets/images/error_toast_icon.svg";
+  static const String warningToastIcon = "assets/images/warning_toast_icon.svg";
+  static const String messageToastIcon =
+      "assets/images/snackbar_message_icon.svg";
+        static const String successToastLeadIcon =
+      "assets/images/success_toast_icon.svg";
 }
 
 // here add svg icons

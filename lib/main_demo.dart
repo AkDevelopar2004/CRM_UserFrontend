@@ -5,5 +5,5 @@ import 'enviorment_config/env_paths.dart';
 
 void main() async {
   AppLoader appLoader = AppLoader();
-  appLoader.loadApp(EnvPaths.pathProd);
+  appLoader.loadApp(EnvPaths.pathDemo);
 }
