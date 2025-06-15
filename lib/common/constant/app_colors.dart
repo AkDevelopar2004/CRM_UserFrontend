@@ -1,6 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../features/profile/profile_controller/theme_controller.dart';
 
 class AppColors {
+  static const Color transparent = Colors.transparent;
+  static const Color primaryColor = Color(0XFF54D1C1);
+    static Color get skyBlueBackgroundColor {
+    final themeController = Get.find<ThemeController>();
+    return themeController.selectedThemeColor;
+  }
+  static const Color actionContactIconBackgroundColor =
+      Color.fromARGB(255, 243, 241, 241);
+  //snackbar colors
+  static const Color successToastBgColor1 = Color(0Xff00B578);
+  static const Color errorToastBgColor1 = Color(0xffFF3141);
+  static const Color warningToastBgColor = Color(0xffFF8F1F);
+  static const Color messageToastBgColor = Color(0xff1677FF);
+
+  //snackbar bubbles Colors
+  static const Color successBubbleColor = Color(0xff06704C);
+  static const Color errorBubbleColor = Color(0xffC80313);
+  static const Color warningBubbleColor = Color(0xffD66B00);
+  static const Color messageBubbleColor = Color(0xff0251C1);
+  static const Color treePoppy = Color(0xffFF9F18);
+  static const Color hintOfGreen = Color(0xffF2FFF7);
+  static const Color zirCon = Color(0xffF3F8FF);
+  static const Color bridalHeath = Color(0xffFFF9F3);
+
+  static const Color backgroundColor = Color(0xff2B2D36);
+  static const Color bottomBackColor = Color(0xff5A5A5D);
+  static const Color tabBarUnselctedColor = Color(0xff7E7E7E);
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color whiteWithGrayMix = Color(0xFFF2F2F2);
   static const Color textformFieldColor = Color.fromRGBO(112, 112, 112, 1);
