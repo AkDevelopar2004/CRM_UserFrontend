@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../features/profile/profile_controller/theme_controller.dart';
-
 class AppColors {
   static const Color transparent = Colors.transparent;
   static const Color primaryColor = Color(0XFF54D1C1);
-    static Color get skyBlueBackgroundColor {
-    final themeController = Get.find<ThemeController>();
-    return themeController.selectedThemeColor;
-  }
+  static Color skyBlueBackgroundColor = const Color(0xff1677FF);
   static const Color actionContactIconBackgroundColor =
       Color.fromARGB(255, 243, 241, 241);
   //snackbar colors
@@ -86,7 +81,7 @@ class AppColors {
   static const Color chartBlueColor = Color(0xFF2B566C);
   static const Color chartGreenColor = Color(0xFF22C55E);
   static const Color unselectedTabColor = Color(0xFF949494);
-  
+
   // new colors
   static const Color darkColor = Color(0xFF262626);
   static const Color lightColor = Color(0xFFFAFAFA);
