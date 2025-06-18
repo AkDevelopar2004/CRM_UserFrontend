@@ -6,7 +6,6 @@ import 'package:user_side_team_frontend/common/constant/app_images.dart';
 import 'package:user_side_team_frontend/common/widgets/primary_button.dart';
 import 'package:user_side_team_frontend/common/widgets/sizedbox_widget.dart';
 import 'package:user_side_team_frontend/common/widgets/text_widget.dart';
-import 'package:user_side_team_frontend/features/case_study/view/case_study_view.dart';
 
 class FiltersPopup extends StatefulWidget {
   FiltersPopup({super.key});

@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:user_side_team_frontend/features/about_course/view/congrates_screen.dart';
 import 'package:user_side_team_frontend/features/about_course/view/question_screen.dart';
@@ -12,39 +12,39 @@ import 'package:user_side_team_frontend/features/bottom_navigation/bottom_naviga
 import 'package:user_side_team_frontend/features/case_study/view/detail_case_study_view.dart';
 import 'package:user_side_team_frontend/features/about_course/view/about_course.dart';
 import 'package:user_side_team_frontend/features/community_guidelines/view/community_guidelines.dart';
-import 'package:user_side_team_frontend/features/homescreen/view/home_screen.dart';
 import 'package:user_side_team_frontend/features/notification/notification_detail_screen.dart';
 import 'package:user_side_team_frontend/features/notification/notification_view.dart';
 import 'package:user_side_team_frontend/features/profile/view/profile_account.dart';
 import 'package:user_side_team_frontend/features/profile/view/edit_profile_screen.dart';
-import 'package:user_side_team_frontend/features/profile/view/payments_screem.dart';
 import 'package:user_side_team_frontend/features/project/view/project_readymade_view.dart';
 import 'package:user_side_team_frontend/features/project/view/send_reference_view.dart';
 import 'package:user_side_team_frontend/features/support/view/support_view.dart';
 import 'package:user_side_team_frontend/utils/navigation/app_routes.dart';
-
-import '../../features/about_course/controller/quiz_controller.dart';
+import '../../common/constant/local_storageKey.dart';
 import '../../features/auth/view/change_password_screen.dart';
 import '../../features/profile/view/appsettings_view.dart';
 import '../../features/profile/view/invoice_view.dart';
 import '../../features/profile/view/notificationSettings_view.dart';
-import '../../features/profile/profile_controller/profile_controller.dart';
-import '../../features/profile/view/invoice_view.dart';
 import '../../features/profile/view/my_projects.dart';
 import '../../features/profile/view/servicesTaken_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
+    navigatorKey: LocalStorageKeyStrings.appNavKey,
     initialLocation: '/',
     routes: [
       GoRoute(
         path: AppRoutes.splashScreen,
-        builder: (context, state) => const SplashScreen(),
+        builder: (BuildContext context, GoRouterState state) =>
+            const SplashScreen(),
       ),
       GoRoute(
         path: AppRoutes.loginScreen,
-        builder: (context, state) => const LoginScreen(),
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return hcCustomTransitionPage(const LoginScreen());
+        },
       ),
+
       GoRoute(
         path: AppRoutes.signupScreen,
         builder: (context, state) => const SingupScreen(),
@@ -113,38 +113,28 @@ class AppRouter {
         path: AppRoutes.communityguideLines,
         builder: (context, state) => const CommunityGuidelines(),
       ),
-       GoRoute(
+      GoRoute(
         path: AppRoutes.support,
         builder: (context, state) => const SupportView(),
       ),
       GoRoute(
         path: AppRoutes.myProjectsScreen,
-        builder: (context, state) {
-          Get.lazyPut<ProjectController>(() => ProjectController());
-          return const MyProjectsScreen();
-        },
+        builder: (context, state) => const MyProjectsScreen(),
       ),
       GoRoute(
         path: AppRoutes.quizscreen,
         builder: (context, state) => const QuizScreen(),
       ),
       GoRoute(
-        path: AppRoutes.questionScreen,
-        builder: (context, state) {
-          Get.lazyPut<QuestionController>(() => QuestionController());
-          return QuestionScreen();
-        },
-      ),
+          path: AppRoutes.questionScreen,
+          builder: (context, state) => QuestionScreen()),
       GoRoute(
         path: AppRoutes.quizscreen,
         builder: (context, state) => const QuizScreen(),
       ),
       GoRoute(
         path: AppRoutes.questionScreen,
-        builder: (context, state) {
-          Get.lazyPut<QuestionController>(() => QuestionController());
-          return QuestionScreen();
-        },
+        builder: (context, state) => const QuestionScreen(),
       ),
       GoRoute(
         path: AppRoutes.congratesScreen,
@@ -163,5 +153,15 @@ class AppRouter {
       //   builder: (context, state) =>  PrivacyScreen(),
       // ),
     ],
+  );
+}
+
+CustomTransitionPage<dynamic> hcCustomTransitionPage(Widget widget) {
+  return CustomTransitionPage(
+    child: widget,
+    transitionDuration: const Duration(milliseconds: 300),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(opacity: animation, child: child);
+    },
   );
 }

@@ -22,11 +22,6 @@ class AppRoutes {
    static const String notificationview="/notifications-view";
   static const String appsettingview= '/app-settings-view';
   static const String privacyview= '/privacy-view';
-
-
-
-
-
    static const String editProfileScreen='/edit-profile';
    static const String myProjectsScreen = '/my-projects';
    static const String communityguideLines ='/community-guidelines';

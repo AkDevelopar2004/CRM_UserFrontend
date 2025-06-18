@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:user_side_team_frontend/common/constant/app_colors.dart';
 
+import '../../../common/constant/app_colors.dart';
 import '../../../common/constant/app_images.dart';
 import '../../../common/widgets/text_widget.dart';
-import '../profile_controller/profile_controller.dart';
+import '../../../bloc/profile_bloc/profile_bloc.dart';
 import '../widget/project_card_widget.dart';
 
 class MyProjectsScreen extends StatelessWidget {
@@ -14,7 +14,6 @@ class MyProjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProjectController controller = Get.find<ProjectController>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[50],
@@ -26,7 +25,6 @@ class MyProjectsScreen extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
@@ -51,120 +49,93 @@ class MyProjectsScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GetBuilder<ProjectController>(
-                builder: (controller) {
-                  return Row(
+        body: BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            final selectedIndex =
+                state is TabChangedState ? state.selectedIndex : 0;
+
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
                     children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => controller.changeTab(0),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            decoration: BoxDecoration(
-                              color: controller.selectedTab == 0
-                                  ? AppColors.primarySkyColor
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: controller.selectedTab == 0
-                                    ? AppColors.primarySkyColor
-                                    : Colors.grey.shade300,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.work_outline,
-                                  color: controller.selectedTab == 0
-                                      ? AppColors.whiteColor
-                                      : AppColors.greyColor,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'In Progress (3)',
-                                  style: TextStyle(
-                                    color: controller.selectedTab == 0
-                                        ? AppColors.whiteColor
-                                        : AppColors.greyColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      _buildTab(
+                        context: context,
+                        index: 0,
+                        selectedIndex: selectedIndex,
+                        label: 'In Progress (2)',
+                        icon: Icons.work_outline,
                       ),
                       const SizedBox(width: 10),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => controller.changeTab(1),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            decoration: BoxDecoration(
-                              color: controller.selectedTab == 1
-                                  ? AppColors.primarySkyColor
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: controller.selectedTab == 1
-                                    ? AppColors.primarySkyColor
-                                    : Colors.grey.shade300,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.folder_outlined,
-                                  color: controller.selectedTab == 1
-                                      ? Colors.white
-                                      : Colors.grey,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'All Projects (6)',
-                                  style: TextStyle(
-                                    color: controller.selectedTab == 1
-                                        ? Colors.white
-                                        : Colors.grey,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      _buildTab(
+                        context: context,
+                        index: 1,
+                        selectedIndex: selectedIndex,
+                        label: 'All Projects (6)',
+                        icon: Icons.folder_outlined,
                       ),
                     ],
-                  );
-                },
-              ),
-            ),
-
-            //  selected tab
-            Expanded(
-              child: GetBuilder<ProjectController>(
-                builder: (_) {
-                  return controller.selectedTab == 0
+                  ),
+                ),
+                Expanded(
+                  child: selectedIndex == 0
                       ? _buildInProgressProjects()
-                      : _buildAllProjects();
-                },
-              ),
-            ),
-          ],
+                      : _buildAllProjects(),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 
-  // In Progress
+  Widget _buildTab({
+    required BuildContext context,
+    required int index,
+    required int selectedIndex,
+    required String label,
+    required IconData icon,
+  }) {
+    final isSelected = selectedIndex == index;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => context.read<ProfileBloc>().add(ChangeTabEvent(index)),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.primarySkyColor : Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color:
+                  isSelected ? AppColors.primarySkyColor : Colors.grey.shade300,
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: isSelected ? AppColors.whiteColor : AppColors.greyColor,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                label,
+                style: TextStyle(
+                  color:
+                      isSelected ? AppColors.whiteColor : AppColors.greyColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildInProgressProjects() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -179,8 +150,7 @@ class MyProjectsScreen extends StatelessWidget {
           avatars: [
             'https://i.pravatar.cc/40?img=1',
             'https://i.pravatar.cc/40?img=2',
-            'https://i.pravatar.cc/40?img=3'
-                'https://i.pravatar.cc/40?img=4'
+            'https://i.pravatar.cc/40?img=3https://i.pravatar.cc/40?img=4'
           ],
           moreCount: '2+',
         ),
@@ -199,25 +169,10 @@ class MyProjectsScreen extends StatelessWidget {
           ],
           moreCount: '1+',
         ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Project Name',
-          subtitle: 'E-commerce',
-          progress: 0.4,
-          progressText: '40%',
-          status: 'In Progress',
-          statusColor: Colors.blue,
-          avatars: [
-            'https://i.pravatar.cc/40?img=8',
-            'https://i.pravatar.cc/40?img=9',
-          ],
-          moreCount: '3+',
-        ),
       ],
     );
   }
 
-  // All Projects
   Widget _buildAllProjects() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -235,76 +190,70 @@ class MyProjectsScreen extends StatelessWidget {
           ],
           moreCount: '1+',
         ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Project Name',
-          subtitle: 'E-commerce',
-          progress: 0.7,
-          progressText: '70%',
-          status: 'In Progress',
-          statusColor: Colors.blue,
-          avatars: [
-            'https://i.pravatar.cc/40?img=1',
-            'https://i.pravatar.cc/40?img=2',
-          ],
-          moreCount: '2+',
-        ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Website Redesign',
-          subtitle: 'Web Development',
-          progress: 0.9,
-          progressText: '90%',
-          status: 'Review',
-          statusColor: Colors.orange,
-          avatars: [
-            'https://i.pravatar.cc/40?img=12',
-            'https://i.pravatar.cc/40?img=13',
-            'https://i.pravatar.cc/40?img=14',
-          ],
-          moreCount: '',
-        ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Dashboard Project',
-          subtitle: 'Analytics',
-          progress: 0.3,
-          progressText: '30%',
-          status: 'In Progress',
-          statusColor: Colors.blue,
-          avatars: [
-            'https://i.pravatar.cc/40?img=15',
-            'https://i.pravatar.cc/40?img=16',
-          ],
-          moreCount: '4+',
-        ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Marketing Campaign',
-          subtitle: 'Digital Marketing',
-          progress: 0.6,
-          progressText: '60%',
-          status: 'In Progress',
-          statusColor: Colors.blue,
-          avatars: [
-            'https://i.pravatar.cc/40?img=17',
-            'https://i.pravatar.cc/40?img=18',
-          ],
-          moreCount: '1+',
-        ),
-        SizedBox(height: 16),
-        ProjectCardWidget(
-          title: 'Brand Identity',
-          subtitle: 'Design',
+         ProjectCardWidget(
+          title: 'Completed Project 1',
+          subtitle: 'Mobile App',
           progress: 1.0,
           progressText: '100%',
           status: 'Completed',
           statusColor: Colors.green,
           avatars: [
-            'https://i.pravatar.cc/40?img=19',
-            'https://i.pravatar.cc/40?img=20',
+            'https://i.pravatar.cc/40?img=10',
+            'https://i.pravatar.cc/40?img=11',
           ],
-          moreCount: '',
+          moreCount: '1+',
+        ),
+        ProjectCardWidget(
+          title: 'Completed Project 1',
+          subtitle: 'Mobile App',
+          progress: 1.0,
+          progressText: '100%',
+          status: 'Completed',
+          statusColor: Colors.green,
+          avatars: [
+            'https://i.pravatar.cc/40?img=10',
+            'https://i.pravatar.cc/40?img=11',
+          ],
+          moreCount: '1+',
+        ),
+        ProjectCardWidget(
+          title: 'Completed Project 1',
+          subtitle: 'Mobile App',
+          progress: 1.0,
+          progressText: '100%',
+          status: 'Completed',
+          statusColor: Colors.green,
+          avatars: [
+            'https://i.pravatar.cc/40?img=10',
+            'https://i.pravatar.cc/40?img=11',
+          ],
+          moreCount: '1+',
+        ),
+        ProjectCardWidget(
+          title: 'Completed Project 1',
+          subtitle: 'Mobile App',
+          progress: 1.0,
+          progressText: '100%',
+          status: 'Completed',
+          statusColor: Colors.green,
+          avatars: [
+            'https://i.pravatar.cc/40?img=10',
+            'https://i.pravatar.cc/40?img=11',
+          ],
+          moreCount: '1+',
+        ),
+        ProjectCardWidget(
+          title: 'Completed Project 1',
+          subtitle: 'Mobile App',
+          progress: 1.0,
+          progressText: '100%',
+          status: 'Completed',
+          statusColor: Colors.green,
+          avatars: [
+            'https://i.pravatar.cc/40?img=10',
+            'https://i.pravatar.cc/40?img=11',
+          ],
+          moreCount: '1+',
         ),
       ],
     );

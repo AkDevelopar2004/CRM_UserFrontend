@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:user_side_team_frontend/bloc/theme_bloc/theme_bloc.dart';
 import '../common/constant/app_colors.dart';
-import '../features/profile/profile_controller/theme_controller.dart';
-import '../utils/dependancy_locator.dart';
 import '../utils/navigation/app_router.dart';
+import '../utils/provider/app_bloc_provider.dart';
 import 'envoirment_config.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
@@ -32,7 +32,7 @@ class AppLoader {
     // Get.put(NotificationController());
 
     // _initializeMapMyIndia();
-    runApp(const MyApp());
+    runApp(AppBlocProviders.provide(child: const MyApp()));
   }
 }
 
@@ -55,11 +55,11 @@ class AppLoader {
 // }
 
 Future<void> _preInit() async {
-  initDependencyLocator();
+  // initDependencyLocator();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppColors.faintSkyColor,
   ));
-  await getIt.allReady();
+  // await getIt.allReady();
   // await PhoneService.init();
 }
 
@@ -68,43 +68,46 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.put(ThemeController());
+    // final ThemeController themeController = Get.put(ThemeController());
 
-    return GetBuilder<ThemeController>(
-        id: themeController.themeId,
-        builder: (_) {
-          return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              builder: (context, child) {
-                return MediaQuery(
-                  data: MediaQuery.of(context)
-                      .copyWith(textScaler: const TextScaler.linear(1.0)),
-                  child: child!,
-                );
-              },
-              theme: ThemeData(
-                colorScheme:
-                    ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-                useMaterial3: true,
-                splashColor: AppColors.transparent, // Removes splash effect
-                highlightColor:
-                    AppColors.transparent, // Removes highlight effect
-                bottomNavigationBarTheme:
-                    const BottomNavigationBarThemeData(elevation: 8.0),
-                bottomSheetTheme: const BottomSheetThemeData(
-                  surfaceTintColor: AppColors.whiteColor,
-                  backgroundColor: AppColors.whiteColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(26.0),
-                    ),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        // Color primaryColor = Colors.blue;
+        // if (state is ThemeLoaded) {
+        //   primaryColor = state.selectedColor;
+        // }
+        return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: const TextScaler.linear(1.0)),
+                child: child!,
+              );
+            },
+            theme: ThemeData(
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+              useMaterial3: true,
+              splashColor: AppColors.transparent, // Removes splash effect
+              highlightColor: AppColors.transparent, // Removes highlight effect
+              bottomNavigationBarTheme:
+                  const BottomNavigationBarThemeData(elevation: 8.0),
+              bottomSheetTheme: const BottomSheetThemeData(
+                surfaceTintColor: AppColors.whiteColor,
+                backgroundColor: AppColors.whiteColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(26.0),
                   ),
                 ),
               ),
-              routerDelegate: AppRouter.router.routerDelegate,
-              routeInformationParser: AppRouter.router.routeInformationParser,
-              routeInformationProvider:
-                  AppRouter.router.routeInformationProvider);
-        });
+            ),
+            routerDelegate: AppRouter.router.routerDelegate,
+            routeInformationParser: AppRouter.router.routeInformationParser,
+            routeInformationProvider:
+                AppRouter.router.routeInformationProvider);
+      },
+    );
   }
 }
